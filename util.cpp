@@ -1,6 +1,9 @@
+#ifndef UTIL_FILE
+#define UTIL_FILE
+
 #include <GL/glut.h>
 
-#define COLOR_SHIP 255, 255, 255
+#define COLOR_BACKGROUND 0.1, 0.0, 0.1
 
 void drawRect(int x, int y, int w, int h) {
   glBegin(GL_POLYGON);
@@ -18,3 +21,5 @@ void drawCircle(int x, int y, float r) {
   gluDisk(quadObj, 0, r, 50, 50);
   glPopMatrix();
 }
+
+#endif
