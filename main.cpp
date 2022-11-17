@@ -11,7 +11,7 @@ int main(int argc, char **argr)
 {
     glutInit(&argc, argr);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(800, 800);
+    glutInitWindowSize(1000, 1000);
     glutInitWindowPosition(50, 50);
     glutCreateWindow("Chicken Invaders");
     glutDisplayFunc(Draw);
@@ -20,7 +20,7 @@ int main(int argc, char **argr)
     // Setup main objects
     player = new Player();
 
-    gluOrtho2D(0.0, 500.0, 0.0, 500.0);
+    gluOrtho2D(0.0, 1000.0, 0.0, 1000.0);
     glutMainLoop();
     return 0;
 }
