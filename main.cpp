@@ -1,12 +1,18 @@
 #include <stdlib.h>
+#include <vector>
+#include <algorithm>
 #include <cmath>
 #include <GL/glut.h>
 
 #include "./player.cpp"
 #include "./chicken.cpp"
+#include "./eggSystem.cpp"
+
+using namespace std;
 
 Player *player;
 Chicken *chicken;
+EggSystem *eggSystem;
 
 void Draw();
 void Timer(int tmp);
@@ -27,6 +33,7 @@ int main(int argc, char **argr)
     // Setup main objects
     player = new Player();
     chicken = new Chicken();
+    eggSystem = new EggSystem(player, chicken);
 
     glClearColor(COLOR_BACKGROUND, 0);
     gluOrtho2D(0.0, 1000.0, 0.0, 1000.0);
@@ -37,6 +44,8 @@ int main(int argc, char **argr)
 
 void Timer(int tmp) {
     chicken->tick();
+    eggSystem->tick();
+
     glutPostRedisplay();
     glutTimerFunc(30, Timer, 0);
 }
@@ -51,6 +60,7 @@ void Draw() {
 
     player->draw();
     chicken->draw();
+    eggSystem->draw();
 
     glutSwapBuffers();
 }
