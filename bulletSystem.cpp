@@ -31,10 +31,8 @@ class BulletSystem {
         // Check if bullet hits
         for(int i = 0; i < bullets.size(); i++) {
             if(distanceBetweenPoints(bullets[i]->curX, bullets[i]->curY, chicken->curX+100, chicken->curY+100) <= 100) {
-                if(bullets[i]->curY >= chicken->curY && bullets[i]->curY <= chicken->curY + 100) {
-                    bullets[i]->alive = false;
-                    chicken->health--;
-                }
+                bullets[i]->alive = false;
+                chicken->health--;
             }
         }
     }

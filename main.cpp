@@ -73,5 +73,18 @@ void Draw() {
     eggSystem->draw();
     bulletSystem->draw();
 
+    // Draw healths.
+    glPushMatrix();
+    glTranslatef(20, 20, 0);
+    glColor3f(1, 0, 0);  // Color Red
+    for(int i = 0; i < player->health; i ++) {
+        glPushMatrix();
+        glTranslatef(i*35, 0, 0);
+        drawHeart();
+        glPopMatrix();
+    }
+    
+    glPopMatrix();
+
     glutSwapBuffers();
 }

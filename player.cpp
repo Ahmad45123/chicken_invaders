@@ -12,7 +12,7 @@ class Player
 public:
     double curX = 450;
     double curY = 450;
-    int health = 5;
+    int health = 4;
 
     void keyDown(int c) {
         if(c == GLUT_KEY_LEFT) {
