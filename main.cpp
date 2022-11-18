@@ -11,6 +11,8 @@
 
 using namespace std;
 
+bool hasWon = false;
+bool hasLost = false;
 Player *player;
 Chicken *chicken;
 EggSystem *eggSystem;
@@ -52,6 +54,15 @@ void Timer(int tmp) {
     eggSystem->tick();
     bulletSystem->tick();
 
+    // Check game status
+    if(player->health <= 0) {
+        hasLost = true;
+    }
+
+    if(chicken->health <= 0) {
+        hasWon = true;
+    }
+
     glutPostRedisplay();
     glutTimerFunc(30, Timer, 0);
 }
@@ -67,6 +78,20 @@ void KeyDown(unsigned char key, int x, int y) {
 
 void Draw() {
     glClear(GL_COLOR_BUFFER_BIT);
+
+    if(hasLost) {
+        glColor3f(1, 0, 0);
+        drawString("You lost!", 450, 600);
+        glutSwapBuffers();
+        return;
+    }
+
+    if(hasWon) {
+        glColor3f(0, 1, 0);
+        drawString("You won :D", 450, 600);
+        glutSwapBuffers();
+        return;
+    }
 
     player->draw();
     chicken->draw();
@@ -86,5 +111,7 @@ void Draw() {
     
     glPopMatrix();
 
+    glColor3f(1, 1, 1);
+    drawString("Dedicated to someone special.", 875, 10, true);
     glutSwapBuffers();
 }

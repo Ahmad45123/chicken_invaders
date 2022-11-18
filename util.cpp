@@ -2,6 +2,9 @@
 #define UTIL_FILE
 
 #include <GL/glut.h>
+#include <string>
+
+using namespace std;
 
 #define COLOR_BACKGROUND 0.1, 0.0, 0.1
 
@@ -36,6 +39,15 @@ void drawHeart()
     glVertex2f(x, y);
   }
   glEnd();
+}
+
+void drawString(string str, int x, int y, bool small = false) {
+  glPushMatrix();
+  glRasterPos2i(x, y);
+  for( size_t i = 0; i < str.size(); ++i ) {
+      glutBitmapCharacter(small ? GLUT_BITMAP_TIMES_ROMAN_10 : GLUT_BITMAP_TIMES_ROMAN_24, (int)str[i] );
+  }
+  glPopMatrix();
 }
 
 double distanceBetweenPoints(int x1, int y1, int x2, int y2)
