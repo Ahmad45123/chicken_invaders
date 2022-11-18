@@ -1,8 +1,6 @@
 #ifndef CHICKEN_FILE
 #define CHICKEN_FILE
 
-#include <stdlib.h>
-#include <cmath>
 #include <GL/glut.h>
 
 #include "./util.cpp"

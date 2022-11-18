@@ -1,7 +1,5 @@
-#include <iostream>
 #include <vector>
 #include <algorithm>
-#include <cmath>
 #include <GL/glut.h>
 
 #include "./player.cpp"

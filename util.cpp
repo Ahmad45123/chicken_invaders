@@ -2,6 +2,7 @@
 #define UTIL_FILE
 
 #include <GL/glut.h>
+#include <cmath>
 #include <string>
 
 using namespace std;

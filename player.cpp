@@ -1,8 +1,6 @@
 #ifndef PLAYER_FILE
 #define PLAYER_FILE
 
-#include <stdlib.h>
-#include <cmath>
 #include <GL/glut.h>
 
 #include "./util.cpp"
