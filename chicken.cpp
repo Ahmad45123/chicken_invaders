@@ -10,7 +10,7 @@
 class Chicken
 {
 public:
-    int health = 0;
+    int health = 10;
     int curX = 5;
     int curY = 760;
     bool movingRight = true;
