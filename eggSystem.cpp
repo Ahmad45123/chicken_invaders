@@ -38,7 +38,7 @@ class EggSystem {
             if(eggs[i]->curX >= player->curX && eggs[i]->curX <= player->curX + 70) {
                 if(eggs[i]->curY >= player->curY && eggs[i]->curY <= player->curY + 75) {
                     eggs[i]->alive = false;
-                    player->health--;
+                    if(!player->isProtected) player->health--;
                 }
             }
         }

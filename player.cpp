@@ -12,7 +12,14 @@ class Player
 public:
     double curX = 450;
     double curY = 450;
-    int health = 4;
+    int health = 3;
+    bool isProtected = false;
+    int protectionTimer = 0;
+
+    void startProtection() {
+        isProtected = true;
+        protectionTimer = glutGet(GLUT_ELAPSED_TIME) + 10000;
+    }
 
     void keyDown(int c) {
         if(c == GLUT_KEY_LEFT) {
@@ -29,13 +36,22 @@ public:
         }
     }
 
+    void tick() {
+        if(isProtected && glutGet(GLUT_ELAPSED_TIME) > protectionTimer) {
+            isProtected = false;
+        }
+    }
+
     void draw() {
         glPushMatrix();
-
         glTranslatef(curX, curY, 0);
 
+        if(isProtected) {
+            glColor3f(0.00, 1.00, 0.23);
+        }
+
         // Draw ship body
-        glColor3f(0.25, 0.32, 0.32);
+        if(!isProtected) glColor3f(0.25, 0.32, 0.32);
         drawRect(20, 0, 30, 60);
 
         glBegin(GL_POLYGON); // top thing
@@ -44,7 +60,7 @@ public:
         glVertex2f(35, 75);
         glEnd();
 
-        glColor3f(0.67, 0.13, 0.13);
+        if(!isProtected) glColor3f(0.67, 0.13, 0.13);
         glBegin(GL_POLYGON); // wings
         glVertex2f(20, 10);
         glVertex2f(20, 40);

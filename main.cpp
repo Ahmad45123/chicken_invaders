@@ -8,6 +8,7 @@
 #include "./chicken.cpp"
 #include "./eggSystem.cpp"
 #include "./bulletSystem.cpp"
+#include "./powerUpSystem.cpp"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ Player *player;
 Chicken *chicken;
 EggSystem *eggSystem;
 BulletSystem *bulletSystem;
+PowerUp *powerUpSystem;
 
 void Draw();
 void Timer(int tmp);
@@ -41,6 +43,7 @@ int main(int argc, char **argr)
     chicken = new Chicken();
     eggSystem = new EggSystem(player, chicken);
     bulletSystem = new BulletSystem(player, chicken);
+    powerUpSystem = new PowerUp(player);
 
     glClearColor(COLOR_BACKGROUND, 0);
     gluOrtho2D(0.0, 1000.0, 0.0, 1000.0);
@@ -50,9 +53,11 @@ int main(int argc, char **argr)
 }
 
 void Timer(int tmp) {
+    player->tick();
     chicken->tick();
     eggSystem->tick();
     bulletSystem->tick();
+    powerUpSystem->tick();
 
     // Check game status
     if(player->health <= 0) {
@@ -97,6 +102,7 @@ void Draw() {
     chicken->draw();
     eggSystem->draw();
     bulletSystem->draw();
+    powerUpSystem->draw();
 
     // Draw healths.
     glPushMatrix();
