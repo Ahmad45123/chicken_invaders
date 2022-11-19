@@ -33,16 +33,16 @@ public:
             isProtected = false;
         }
 
-        if(isKeyDown[GLUT_KEY_LEFT]) {
+        if(isKeyDown[GLUT_KEY_LEFT] && curX > 0) {
             curX -= 3;
         }
-        if(isKeyDown[GLUT_KEY_RIGHT]) {
+        if(isKeyDown[GLUT_KEY_RIGHT] && curX < 900) {
             curX += 3;
         }
-        if(isKeyDown[GLUT_KEY_UP]) {
+        if(isKeyDown[GLUT_KEY_UP] && curY < 600) {
             curY += 3;
         }
-        if(isKeyDown[GLUT_KEY_DOWN]) {
+        if(isKeyDown[GLUT_KEY_DOWN] && curY > 0) {
             curY -= 3;
         }
     }
