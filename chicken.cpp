@@ -15,13 +15,13 @@ public:
 
     void tick() {
         if(movingRight) {
-            curX += 5;
-            if(curX == 780) {
+            curX += 2.5;
+            if(curX >= 780) {
                 movingRight = false;
             }
         } else {
-            curX -= 5;
-            if(curX == 5) {
+            curX -= 2.5;
+            if(curX <= 5) {
                 movingRight = true;
             }
         }

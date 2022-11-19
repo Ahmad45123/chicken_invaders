@@ -19,24 +19,31 @@ public:
         protectionTimer = glutGet(GLUT_ELAPSED_TIME) + 10000;
     }
 
-    void keyDown(int c) {
-        if(c == GLUT_KEY_LEFT) {
-            curX -= 3;
-        }
-        if(c == GLUT_KEY_RIGHT) {
-            curX += 3;
-        }
-        if(c == GLUT_KEY_UP) {
-            curY += 3;
-        }
-        if(c == GLUT_KEY_DOWN) {
-            curY -= 3;
-        }
+    bool isKeyDown[256] = {0};
+    void specialKeyDown(int c) {
+        isKeyDown[c] = true;
+    }
+
+    void specialKeyUp(int c) {
+        isKeyDown[c] = false;
     }
 
     void tick() {
         if(isProtected && glutGet(GLUT_ELAPSED_TIME) > protectionTimer) {
             isProtected = false;
+        }
+
+        if(isKeyDown[GLUT_KEY_LEFT]) {
+            curX -= 3;
+        }
+        if(isKeyDown[GLUT_KEY_RIGHT]) {
+            curX += 3;
+        }
+        if(isKeyDown[GLUT_KEY_UP]) {
+            curY += 3;
+        }
+        if(isKeyDown[GLUT_KEY_DOWN]) {
+            curY -= 3;
         }
     }
 

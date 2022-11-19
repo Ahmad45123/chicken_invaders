@@ -19,6 +19,15 @@ class BulletSystem {
         chicken = chick;
     }
 
+    bool keys[256] = {false};
+    void keyDown(char key) {
+        keys[key] = true;
+    }
+    void keyUp(char key) {
+        keys[key] = false;
+    }
+
+    long lastShot = 0;
     void tick() {
         vector<int> deadBullets;
         for(int i = 0; i < bullets.size(); i++) {
@@ -35,12 +44,10 @@ class BulletSystem {
                 chicken->health--;
             }
         }
-    }
 
-    long lastShot = 0;
-    void keyPress(char key) {
-        if(key == ' ') {
-            if(glutGet(GLUT_ELAPSED_TIME) - lastShot > 500) {
+        // Create bullets
+        if(keys[' ']) {
+            if(glutGet(GLUT_ELAPSED_TIME) - lastShot > 200) {
                 bullets.push_back(new Bullet(player->curX + 35, player->curY + 75));
                 lastShot = glutGet(GLUT_ELAPSED_TIME);
             }

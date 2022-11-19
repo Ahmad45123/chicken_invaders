@@ -20,8 +20,10 @@ PowerUp *powerUpSystem;
 
 void Draw();
 void Timer(int tmp);
-void KeyDown(int key, int x, int y);
+void SpecialKeyDown(int key, int x, int y);
+void SpecialKeyUp(int key, int x, int y);
 void KeyDown(unsigned char key, int x, int y);
+void KeyUp(unsigned char key, int x, int y);
 
 int main(int argc, char **argr)
 {
@@ -31,10 +33,11 @@ int main(int argc, char **argr)
     glutInitWindowPosition(50, 50);
     glutCreateWindow("Chicken Invaders");
     glutDisplayFunc(Draw);
-    glutSpecialFunc(KeyDown);
+    glutSpecialFunc(SpecialKeyDown);
+    glutSpecialUpFunc(SpecialKeyUp);
     glutKeyboardFunc(KeyDown);
-    glutTimerFunc(10, Timer, 0);
-    glutIdleFunc(Draw);
+    glutKeyboardUpFunc(KeyUp);
+    glutTimerFunc(0, Timer, 0);
 
     // Setup main objects
     player = new Player();
@@ -66,17 +69,23 @@ void Timer(int tmp) {
         hasWon = true;
     }
 
-    glutPostRedisplay();
     glutTimerFunc(10, Timer, 0);
+    glutPostRedisplay();
 }
 
-void KeyDown(int key, int x, int y) {
-    player->keyDown(key);
-    glutPostRedisplay();
+void SpecialKeyDown(int key, int x, int y) {
+    player->specialKeyDown(key);
 }
+void SpecialKeyUp(int key, int x, int y) {
+    player->specialKeyUp(key);
+}
+
+
 void KeyDown(unsigned char key, int x, int y) {
-    bulletSystem->keyPress(key);
-    glutPostRedisplay();
+    bulletSystem->keyDown(key);
+}
+void KeyUp(unsigned char key, int x, int y) {
+    bulletSystem->keyUp(key);
 }
 
 void Draw() {
