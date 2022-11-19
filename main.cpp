@@ -113,7 +113,7 @@ void Draw() {
 
     // Draw healths.
     glPushMatrix();
-    glTranslatef(20, 20, 0);
+    glTranslatef(900, 980, 0);
     glColor3f(1, 0, 0);  // Color Red
     for(int i = 0; i < player->health; i ++) {
         glPushMatrix();
