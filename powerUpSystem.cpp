@@ -19,7 +19,7 @@ class PowerUp {
 
     int lastUpdate = 0;
     void tick() {
-        if(rand() % 1000 <= 5 && glutGet(GLUT_ELAPSED_TIME) - lastUpdate >= 3000 && !player->isProtected) {
+        if(!isExisting && rand() % 1000 <= 2.5 && glutGet(GLUT_ELAPSED_TIME) - lastUpdate >= 3000 && !player->isProtected) {
             isExisting = true;
             lastUpdate = glutGet(GLUT_ELAPSED_TIME);
             curX = 100 + rand() % 900;

@@ -16,7 +16,7 @@ public:
 
     void startProtection() {
         isProtected = true;
-        protectionTimer = glutGet(GLUT_ELAPSED_TIME) + 10000;
+        protectionTimer = glutGet(GLUT_ELAPSED_TIME) + 6000;
     }
 
     bool isKeyDown[256] = {0};
