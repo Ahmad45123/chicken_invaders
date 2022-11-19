@@ -22,8 +22,8 @@ class PowerUp {
         if(rand() % 1000 <= 5 && glutGet(GLUT_ELAPSED_TIME) - lastUpdate >= 3000 && !player->isProtected) {
             isExisting = true;
             lastUpdate = glutGet(GLUT_ELAPSED_TIME);
-            curX = 100 + rand() % 700;
-            curY = 100 + rand() % 700;
+            curX = 100 + rand() % 600;
+            curY = 100 + rand() % 600;
         }
 
         if(isExisting) {
