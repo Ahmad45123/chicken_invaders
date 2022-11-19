@@ -33,7 +33,7 @@ int main(int argc, char **argr)
     glutDisplayFunc(Draw);
     glutSpecialFunc(KeyDown);
     glutKeyboardFunc(KeyDown);
-    glutTimerFunc(30, Timer, 0);
+    glutTimerFunc(10, Timer, 0);
     glutIdleFunc(Draw);
 
     // Setup main objects
@@ -67,7 +67,7 @@ void Timer(int tmp) {
     }
 
     glutPostRedisplay();
-    glutTimerFunc(30, Timer, 0);
+    glutTimerFunc(10, Timer, 0);
 }
 
 void KeyDown(int key, int x, int y) {
@@ -114,6 +114,6 @@ void Draw() {
     }
     
     glPopMatrix();
-    
+
     glutSwapBuffers();
 }

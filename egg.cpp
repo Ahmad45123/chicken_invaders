@@ -17,7 +17,7 @@ public:
 
     void tick() {
         if(!alive) return;
-        curY -= 2;
+        curY -= 3;
         if(curY <= 0) {
             alive = false;
         }
