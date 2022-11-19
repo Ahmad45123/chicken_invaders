@@ -114,8 +114,6 @@ void Draw() {
     }
     
     glPopMatrix();
-
-    glColor3f(1, 1, 1);
-    drawString("Dedicated to someone special.", 875, 10, true);
+    
     glutSwapBuffers();
 }

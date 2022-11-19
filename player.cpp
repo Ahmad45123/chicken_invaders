@@ -21,16 +21,16 @@ public:
 
     void keyDown(int c) {
         if(c == GLUT_KEY_LEFT) {
-            curX -= 2.5;
+            curX -= 3;
         }
         if(c == GLUT_KEY_RIGHT) {
-            curX += 2.5;
+            curX += 3;
         }
         if(c == GLUT_KEY_UP) {
-            curY += 2.5;
+            curY += 3;
         }
         if(c == GLUT_KEY_DOWN) {
-            curY -= 2.5;
+            curY -= 3;
         }
     }
 
