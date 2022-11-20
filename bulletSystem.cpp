@@ -59,4 +59,8 @@ class BulletSystem {
             bullet->draw();
         }
     }
+
+    void reset() {
+        bullets.clear();
+    }
 };

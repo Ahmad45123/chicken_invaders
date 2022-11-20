@@ -86,12 +86,11 @@ void KeyDown(unsigned char key, int x, int y) {
     if(key == 'r' && (hasWon || hasLost)) {
         hasWon = false;
         hasLost = false;
-        player->health = 3;
-        player->curX = player->curY = 450;
-        player->isProtected = false;
-        chicken->health = 10;
-        eggSystem->eggs.clear();
-        bulletSystem->bullets.clear();
+        player->reset();
+        chicken->reset();
+        eggSystem->reset();
+        bulletSystem->reset();
+        powerUpSystem->reset();
     }
 }
 void KeyUp(unsigned char key, int x, int y) {

@@ -63,6 +63,13 @@ public:
 
         glPopMatrix();
     }
+
+    void reset() {
+        this->health = 10;
+        this->curX = 5;
+        this->curY = 735;
+        this->movingRight = true;
+    }
 };
 
 #endif

@@ -83,6 +83,12 @@ public:
 
         glPopMatrix();
     }
+
+    void reset() {
+        this->health = 3;
+        this->curX = this->curY = 450;
+        this->isProtected = false;
+    }
 };
 
 #endif

@@ -53,4 +53,8 @@ class PowerUp {
         glEnd();
         glPopMatrix();
     }
+
+    void reset() {
+        isExisting = false;
+    }
 };

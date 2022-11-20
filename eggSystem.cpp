@@ -48,4 +48,8 @@ class EggSystem {
             egg->draw();
         }
     }
+
+    void reset() {
+        eggs.clear();
+    }
 };
