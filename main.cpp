@@ -25,8 +25,9 @@ void SpecialKeyUp(int key, int x, int y);
 void KeyDown(unsigned char key, int x, int y);
 void KeyUp(unsigned char key, int x, int y);
 
-int main(int argc, char **argr)
-{
+int main(int argc, char **argr) {
+    srand(time(NULL));
+
     glutInit(&argc, argr);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(1000, 1000);
