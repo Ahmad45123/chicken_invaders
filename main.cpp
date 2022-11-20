@@ -83,6 +83,16 @@ void SpecialKeyUp(int key, int x, int y) {
 
 void KeyDown(unsigned char key, int x, int y) {
     bulletSystem->keyDown(key);
+    if(key == 'r' && (hasWon || hasLost)) {
+        hasWon = false;
+        hasLost = false;
+        player->health = 3;
+        player->curX = player->curY = 450;
+        player->isProtected = false;
+        chicken->health = 10;
+        eggSystem->eggs.clear();
+        bulletSystem->bullets.clear();
+    }
 }
 void KeyUp(unsigned char key, int x, int y) {
     bulletSystem->keyUp(key);
@@ -91,13 +101,16 @@ void KeyUp(unsigned char key, int x, int y) {
 void Draw() {
     glClear(GL_COLOR_BUFFER_BIT);
 
+    if(hasLost || hasWon) {
+        glColor3f(1, 1, 1);
+        drawString("Press r to restart.", 430, 575);
+    }
     if(hasLost) {
         glColor3f(1, 0, 0);
         drawString("You lost!", 450, 600);
         glutSwapBuffers();
         return;
     }
-
     if(hasWon) {
         glColor3f(0, 1, 0);
         drawString("You won :D", 450, 600);
@@ -113,7 +126,7 @@ void Draw() {
 
     // Draw healths.
     glPushMatrix();
-    glTranslatef(900, 980, 0);
+    glTranslatef(30, 980, 0);
     glColor3f(1, 0, 0);  // Color Red
     for(int i = 0; i < player->health; i ++) {
         glPushMatrix();
