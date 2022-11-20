@@ -29,7 +29,7 @@ class EggSystem {
 
         // Add eggs
         if(rand() % 100 <= 1) {
-            eggs.push_back(new Egg(chicken->curX, chicken->curY));
+            eggs.push_back(new Egg(chicken->curX + 100, chicken->curY));
         }
 
         // Check for collisions
