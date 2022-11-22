@@ -8,7 +8,8 @@
 class Chicken
 {
 public:
-    double health = 10;
+    const double MAX_HEALTH = 30;
+    double health = MAX_HEALTH;
     int curX = 5;
     int curY = 735;
     bool movingRight = true;
@@ -59,13 +60,13 @@ public:
         glColor3f(1.00, 1.00, 1.00);
         drawRect(0, 235, 200.0, 20);
         glColor3f(1.00, 0.00, 0.00);
-        drawRect(2, 237, ((health/10.0)*200.0)-4, 20-4);
+        drawRect(2, 237, ((health/MAX_HEALTH)*200.0)-4, 20-4);
 
         glPopMatrix();
     }
 
     void reset() {
-        this->health = 10;
+        this->health = MAX_HEALTH;
         this->curX = 5;
         this->curY = 735;
         this->movingRight = true;
